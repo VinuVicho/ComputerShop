@@ -33,11 +33,11 @@ public class OrderController {
     public String viewComputer(@PathVariable Long computerId, Model model) {
         model.addAttribute("newOrder", new Order());
         Computer computer = computerService.getComputerById(computerId);
-        System.out.println(computer.getClass());
-        if (computer instanceof Smartphone smartphone) {
-            model.addAttribute("smartphone", smartphone);
-            model.addAttribute("type", "Smartphone");
-        }
+        model.addAttribute("computer", computer);
+//        if (computer instanceof Smartphone smartphone) {
+//            model.addAttribute("smartphone", smartphone);
+//            model.addAttribute("type", "Smartphone");
+//        }
         return "computer";
     }
 }
