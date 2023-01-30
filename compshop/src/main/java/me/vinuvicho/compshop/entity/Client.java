@@ -12,12 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Client {
-    @SequenceGenerator(name = "player_sequence", sequenceName = "player_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "client_sequence", sequenceName = "client_sequence", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_sequence")
     private Long id;
 
     @NotNull
     private String clientName;
-
+    private String clientEmail;
+    private String clientLocation;
 }

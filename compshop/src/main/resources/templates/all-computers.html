@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Computers</title>
+</head>
+<body>
+<div th:each="computer : ${computers}">
+    <hr>
+    <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">
+        <p th:text="${computer.getName()}"></p>
+        <p th:text="${computer.getInfo()}"></p>
+        <p th:text="'In stock: ' + ${computer.getStock()}"></p>
+    </a>
+</div>
+</body>
+</html>

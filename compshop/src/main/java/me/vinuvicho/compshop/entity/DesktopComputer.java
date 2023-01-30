@@ -1,13 +1,13 @@
 package me.vinuvicho.compshop.entity;
 
-import lombok.*;
+import lombok.Data;
 
-import javax.persistence.*;
-
+import javax.persistence.Entity;
 
 @Entity
 @Data
-public class Laptop extends Computer {
+public class DesktopComputer extends Computer {
+
     private Long screen;
 
     @Override
