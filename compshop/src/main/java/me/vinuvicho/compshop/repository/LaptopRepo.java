@@ -1,6 +1,6 @@
 package me.vinuvicho.compshop.repository;
 
-import me.vinuvicho.compshop.entity.Laptop;
+import me.vinuvicho.compshop.entity.computer.Laptop;
 
 import javax.transaction.Transactional;
 

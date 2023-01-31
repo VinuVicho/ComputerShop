@@ -1,13 +1,12 @@
 package me.vinuvicho.compshop.service;
 
 import lombok.AllArgsConstructor;
-import me.vinuvicho.compshop.entity.Computer;
-import me.vinuvicho.compshop.entity.Laptop;
-import me.vinuvicho.compshop.entity.Smartphone;
+import me.vinuvicho.compshop.entity.computer.Computer;
+import me.vinuvicho.compshop.entity.computer.Laptop;
+import me.vinuvicho.compshop.entity.computer.Smartphone;
 import me.vinuvicho.compshop.repository.ComputerRepo;
 import me.vinuvicho.compshop.repository.LaptopRepo;
 import me.vinuvicho.compshop.repository.SmartphoneRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,9 +46,7 @@ public class ComputerService {
     }
 
     public List<Computer> getAllComputers() {
-        List<Computer> computers = new ArrayList<>(computerRepo.findAll());
-        System.out.println(computers);
-        return computers;
+        return new ArrayList<>(computerRepo.findAll());
     }
 
 }

@@ -1,16 +1,13 @@
 package me.vinuvicho.compshop.controller;
 
 import lombok.AllArgsConstructor;
-import me.vinuvicho.compshop.entity.Computer;
+import me.vinuvicho.compshop.entity.computer.Computer;
 import me.vinuvicho.compshop.entity.Order;
-import me.vinuvicho.compshop.entity.Smartphone;
 import me.vinuvicho.compshop.service.ComputerService;
 import me.vinuvicho.compshop.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,10 +31,12 @@ public class OrderController {
         model.addAttribute("newOrder", new Order());
         Computer computer = computerService.getComputerById(computerId);
         model.addAttribute("computer", computer);
-//        if (computer instanceof Smartphone smartphone) {
-//            model.addAttribute("smartphone", smartphone);
-//            model.addAttribute("type", "Smartphone");
-//        }
         return "computer";
+    }
+
+    @PostMapping("/{computerId}/buy")
+    public String orderComputer(@PathVariable Long computerId, @ModelAttribute Order order, Model model) {
+        model.addAttribute("response", orderService.orderComputer(order, computerId));
+        return "order-response";
     }
 }

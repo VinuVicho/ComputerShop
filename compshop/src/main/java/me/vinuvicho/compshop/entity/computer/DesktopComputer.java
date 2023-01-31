@@ -1,14 +1,19 @@
-package me.vinuvicho.compshop.entity;
+package me.vinuvicho.compshop.entity.computer;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class DesktopComputer extends Computer {
 
     private Long screen;
+    private String memoryType;
 
     @Override
     public String displayInfo() {

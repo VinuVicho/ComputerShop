@@ -1,13 +1,11 @@
 package me.vinuvicho.compshop.controller;
 
 import lombok.AllArgsConstructor;
-import me.vinuvicho.compshop.entity.Computer;
-import me.vinuvicho.compshop.entity.Smartphone;
+import me.vinuvicho.compshop.entity.computer.Computer;
+import me.vinuvicho.compshop.entity.computer.Smartphone;
 import me.vinuvicho.compshop.service.ComputerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

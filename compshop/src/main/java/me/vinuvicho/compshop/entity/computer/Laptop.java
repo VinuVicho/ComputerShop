@@ -1,12 +1,15 @@
-package me.vinuvicho.compshop.entity;
+package me.vinuvicho.compshop.entity.computer;
 
 import lombok.*;
 
 import javax.persistence.*;
 
-
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Laptop extends Computer {
     private Long screen;
 

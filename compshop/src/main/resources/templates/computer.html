@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title th:text="${computer.getName()}"></title>
 </head>
 <body>
+<a href="http://localhost:8080/shop">View all available Computers</a>
+<hr>
 <p th:utext="${computer.displayInfo()}"></p>
+<hr>
+<form th:method="POST" th:action="@{/shop/{computerId}/buy (computerId=${computer.getComputerId()})}" th:object="${newOrder}">
+    <p>Order computer:</p>
+    <label for="email">Enter email to contact:</label>
+    <input type="text" th:field="*{userEmail}" id="email">
+    <br>
+    <input type="submit" value="Order">
+</form>
 </body>
 </html>

@@ -6,12 +6,15 @@
 </head>
 <body>
 <div th:each="computer : ${computers}">
-    <hr>
-    <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">
-        <p th:text="${computer.getName()}"></p>
-        <p th:text="${computer.getInfo()}"></p>
-        <p th:text="'In stock: ' + ${computer.getStock()}"></p>
-    </a>
+    <div th:if="${computer.getStock() > 0}">
+        <hr>
+        <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">
+            <p th:text="${computer.getName()}"></p>
+            <p th:text="${computer.getInfo()}"></p>
+            <p th:text="'Price: ' + ${computer.getComputerPrice()}"></p>
+            <p th:text="'In stock: ' + ${computer.getStock()}"></p>
+        </a>
+    </div>
 </div>
 </body>
 </html>

@@ -1,8 +1,7 @@
 package me.vinuvicho.compshop.repository;
 
-import me.vinuvicho.compshop.entity.Computer;
+import me.vinuvicho.compshop.entity.computer.Computer;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
