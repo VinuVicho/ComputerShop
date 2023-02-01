@@ -7,14 +7,32 @@
 <body>
 <a href="http://localhost:8080/shop">View all available Computers</a>
 <hr>
-<p th:utext="${computer.displayInfo()}"></p>
+<h2 th:utext="${computer.displayName()}"></h2>
+<p th:text="${computer.getInfo()}"></p>
+<table>
+    <tr>
+        <td><b>Property</b></td>
+        <td><b>Details</b></td>
+        <td><b>Price</b></td>
+    </tr>
+    <p th:utext="${computer.displayInfo()}">
+</table>
+<p th:text="'Price: $' + ${computer.getComputerPrice()}"></p>
 <hr>
-<form th:method="POST" th:action="@{/shop/{computerId}/buy (computerId=${computer.getComputerId()})}" th:object="${newOrder}">
-    <p>Order computer:</p>
-    <label for="email">Enter email to contact:</label>
-    <input type="text" th:field="*{userEmail}" id="email">
-    <br>
-    <input type="submit" value="Order">
-</form>
+<div th:if="${computer.getStock() > 0}">
+    <p th:text="'In stock: ' + ${computer.getStock()}"></p>
+    <form th:method="POST" th:action="@{/shop/{computerId}/buy (computerId=${computer.getComputerId()})}"
+          th:object="${newOrder}">
+        <p>Order computer:</p>
+        <label for="email">Enter email to contact:</label>
+        <input type="text" th:field="*{userEmail}" id="email">
+        <br>
+        <input type="submit" value="Order">
+    </form>
+</div>
+
+<div th:if="${computer.getStock() == 0}">
+    <p>Currently this computer out of stock</p>
+</div>
 </body>
 </html>

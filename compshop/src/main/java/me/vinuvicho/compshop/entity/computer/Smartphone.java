@@ -2,7 +2,9 @@ package me.vinuvicho.compshop.entity.computer;
 
 import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -11,11 +13,20 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Smartphone extends Computer {
-    private Long cameraMP;
-    private Long frontCameraMP;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ComputerProperty camera;
+
+    public Smartphone(String name, String info, Double computerPrice, Integer stock) {
+        super(name, info, computerPrice, stock);
+    }
 
     @Override
     public String displayInfo() {
-        return "<h2>Smartphone " + getName() + "</h2>" + super.displayInfo();
+        return super.displayInfo() + camera.displayInfo();
+    }
+
+    @Override
+    public String displayName() {
+        return "Smartphone " + getName();
     }
 }

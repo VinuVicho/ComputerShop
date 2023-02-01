@@ -28,7 +28,7 @@ public class ComputerController {
     }
 
     @GetMapping("/{computerId}")
-    public ResponseEntity<Computer> findById(@PathVariable Long computerId) {
+    public ResponseEntity<Computer> findById(@PathVariable Integer computerId) {
         return new ResponseEntity<>(computerService.getComputerById(computerId), HttpStatus.OK);
     }
 }

@@ -21,13 +21,18 @@ public class OrderController {
 
     @GetMapping()
     public String displayAllProducts(Model model) {
-        List<Computer> computers = computerService.getAllComputers();
-        model.addAttribute("computers", computers);
+        model.addAttribute("computers", computerService.getAllComputers());
         return "all-computers";
     }
 
+    @GetMapping("/orders")
+    public String viewOrders(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
+        return "all-orders";
+    }
+
     @GetMapping("/{computerId}")
-    public String viewComputer(@PathVariable Long computerId, Model model) {
+    public String viewComputer(@PathVariable Integer computerId, Model model) {
         model.addAttribute("newOrder", new Order());
         Computer computer = computerService.getComputerById(computerId);
         model.addAttribute("computer", computer);
@@ -35,8 +40,24 @@ public class OrderController {
     }
 
     @PostMapping("/{computerId}/buy")
-    public String orderComputer(@PathVariable Long computerId, @ModelAttribute Order order, Model model) {
+    public String orderComputer(@PathVariable Integer computerId, @ModelAttribute Order order, Model model) {
         model.addAttribute("response", orderService.orderComputer(order, computerId));
         return "order-response";
+    }
+
+    @GetMapping("/desktop_computers")
+    public String displayAllDesktopComputers(Model model) {
+        model.addAttribute("computers", computerService.getAllDesktops());
+        return "all-computers";
+    }
+    @GetMapping("/laptops")
+    public String displayAllLaptops(Model model) {
+        model.addAttribute("computers", computerService.getAllLaptops());
+        return "all-computers";
+    }
+    @GetMapping("/smartphones")
+    public String displayAllSmartphones(Model model) {
+        model.addAttribute("computers", computerService.getAllSmartphones());
+        return "all-computers";
     }
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<a href="http://localhost:8080/shop">View all available Computers</a>
+<hr>
+<div th:if="${orders.size() == 0}">
+    <h2>Currently no orders</h2>
+</div>
+<div th:each="order : ${orders}">
+    <p th:text="${order.getUserEmail()}"></p>
+    <a th:href="@{/shop/{id} (id=${order.getComputer().getComputerId()})}">
+        <p th:text="${order.getComputer().getName()}"></p>
+    </a>
+    <hr>
+</div>
+</body>
+</html>

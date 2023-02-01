@@ -6,6 +6,5 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface ComputerRepo<T extends Computer> extends ComputerBaseRepo<Computer> {
-//    List<Computer> getAll();
 
 }

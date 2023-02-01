@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
-public interface ComputerBaseRepo <T extends Computer> extends JpaRepository<T, Long> {
-    T findByComputerId(Long Id);
+public interface ComputerBaseRepo <T extends Computer> extends JpaRepository<T, Integer> {
+    T findByComputerId(Integer Id);
 }

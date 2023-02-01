@@ -2,7 +2,9 @@ package me.vinuvicho.compshop.entity.computer;
 
 import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -12,11 +14,22 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class DesktopComputer extends Computer {
 
-    private Long screen;
-    private String memoryType;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ComputerProperty graphicCard;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ComputerProperty motherboard;
+
+    public DesktopComputer(String name, String info, Double computerPrice, Integer stock) {
+        super(name, info, computerPrice, stock);
+    }
 
     @Override
     public String displayInfo() {
-        return null;
+        return super.displayInfo() + graphicCard.displayInfo() + motherboard.displayInfo();
+    }
+
+    @Override
+    public String displayName() {
+        return "Desktop computer " + getName();
     }
 }

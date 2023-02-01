@@ -5,14 +5,31 @@
     <title>Computers</title>
 </head>
 <body>
+<table>
+    <tr>
+        <td><a href="http://localhost:8080/shop/desktop_computers">Desktop computers</a></td>
+        <td><a href="http://localhost:8080/shop/laptops">Laptops</a></td>
+        <td><a href="http://localhost:8080/shop/smartphones">Smartphones</a></td>
+        <td><a href="http://localhost:8080/shop/orders">Orders</a></td>
+</table>
 <div th:each="computer : ${computers}">
     <div th:if="${computer.getStock() > 0}">
         <hr>
         <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">
-            <p th:text="${computer.getName()}"></p>
+            <h2 th:utext="${computer.displayName()}"></h2>
             <p th:text="${computer.getInfo()}"></p>
-            <p th:text="'Price: ' + ${computer.getComputerPrice()}"></p>
+            <p th:text="'Price: $' + ${computer.getComputerPrice()}"></p>
             <p th:text="'In stock: ' + ${computer.getStock()}"></p>
+        </a>
+    </div>
+    <hr>
+    <div th:if="${computer.getStock() == 0}">
+        <hr>
+        <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">
+            <h2 th:utext="${computer.displayName()}"></h2>
+            <p th:text="${computer.getInfo()}"></p>
+            <p th:text="'Price: $' + ${computer.getComputerPrice()}"></p>
+            <p>No in stock</p>
         </a>
     </div>
 </div>

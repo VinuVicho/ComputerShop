@@ -7,6 +7,8 @@ import me.vinuvicho.compshop.repository.ComputerRepo;
 import me.vinuvicho.compshop.repository.OrderRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class OrderService {
@@ -14,18 +16,22 @@ public class OrderService {
     private final OrderRepo orderRepo;
     private final ComputerRepo<? extends Computer> computerRepo;
 
-    public String orderComputer(Order order, Long computerId) {
+    public String orderComputer(Order order, Integer computerId) {
         if (isValidEmailAddress(order.getUserEmail())) {
             Computer computer = computerRepo.findByComputerId(computerId);
             if (computer.getStock() > 0) {
                 orderRepo.decreaseComputerStock(computerId);
-                order.setComputerId(computerId);
+                order.setComputer(computer);
                 orderRepo.save(order);
                 return "Order created, wait for email with further instructions";
             }
             return "No Computer in Stock";
         }
         return "Email validation failed";
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepo.findAll();
     }
 
     public boolean isValidEmailAddress(String email) {

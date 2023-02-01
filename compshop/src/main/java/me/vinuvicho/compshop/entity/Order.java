@@ -1,6 +1,7 @@
 package me.vinuvicho.compshop.entity;
 
 import lombok.*;
+import me.vinuvicho.compshop.entity.computer.Computer;
 
 import javax.persistence.*;
 
@@ -18,5 +19,6 @@ public class Order {
     private Long id;
 
     private String userEmail;
-    private Long computerId;
+    @ManyToOne()
+    private Computer computer;
 }
