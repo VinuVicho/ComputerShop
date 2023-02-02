@@ -2,37 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${computer.getName()}"></title>
+    <title th:unless="${computer == null}" th:text="${computer.getName()}"></title>
 </head>
 <body>
 <a href="http://localhost:8080/shop">View all available Computers</a>
 <hr>
-<h2 th:utext="${computer.displayName()}"></h2>
-<p th:text="${computer.getInfo()}"></p>
-<table>
-    <tr>
-        <td><b>Property</b></td>
-        <td><b>Details</b></td>
-        <td><b>Price</b></td>
-    </tr>
-    <p th:utext="${computer.displayInfo()}">
-</table>
-<p th:text="'Price: $' + ${computer.getComputerPrice()}"></p>
-<hr>
-<div th:if="${computer.getStock() > 0}">
-    <p th:text="'In stock: ' + ${computer.getStock()}"></p>
-    <form th:method="POST" th:action="@{/shop/{computerId}/buy (computerId=${computer.getComputerId()})}"
-          th:object="${newOrder}">
-        <p>Order computer:</p>
-        <label for="email">Enter email to contact:</label>
-        <input type="text" th:field="*{userEmail}" id="email">
-        <br>
-        <input type="submit" value="Order">
-    </form>
-</div>
+<div th:unless="${computer == null}">
+    <h2 th:utext="${computer.displayName()}"></h2>
+    <p th:text="${computer.getInfo()}"></p>
+    <table>
+        <tr>
+            <td><b>Property</b></td>
+            <td><b>Details</b></td>
+            <td><b>Price</b></td>
+        </tr>
+        <p th:utext="${computer.displayInfo()}">
+    </table>
+    <p th:text="'Price: $' + ${computer.getComputerPrice()}"></p>
+    <hr>
+    <div th:if="${computer.getStock() > 0}">
+        <p th:text="'In stock: ' + ${computer.getStock()}"></p>
+        <form th:method="POST" th:action="@{/shop/{computerId}/buy (computerId=${computer.getComputerId()})}"
+              th:object="${newOrder}">
+            <p>Order computer:</p>
+            <label for="email">Enter email to contact:</label>
+            <input type="text" th:field="*{userEmail}" id="email">
+            <br>
+            <input type="submit" value="Order">
+        </form>
+    </div>
 
-<div th:if="${computer.getStock() == 0}">
-    <p>Currently this computer out of stock</p>
+    <div th:if="${computer.getStock() == 0}">
+        <p>Currently this computer out of stock</p>
+    </div>
 </div>
+<div th:if="${computer == null}">Computer not found</div>
 </body>
 </html>
