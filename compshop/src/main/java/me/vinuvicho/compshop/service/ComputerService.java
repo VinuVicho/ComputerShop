@@ -20,7 +20,6 @@ public class ComputerService {
     private final SmartphoneRepo smartphoneRepo;
     private final DesktopComputerRepo desktopComputerRepo;
 
-
     public Computer getComputerById(Integer id) {
         return computerRepo.findByComputerId(id);
     }
@@ -34,9 +33,11 @@ public class ComputerService {
     public List<DesktopComputer> getAllDesktops() {
         return new ArrayList<>(desktopComputerRepo.findAll());
     }
+
     public List<Laptop> getAllLaptops() {
         return new ArrayList<>(laptopRepo.findAll());
     }
+
     public List<Smartphone> getAllSmartphones() {
         return new ArrayList<>(smartphoneRepo.findAll());
     }
@@ -44,7 +45,6 @@ public class ComputerService {
     public Smartphone createSmartphone(Smartphone smartphone) {
         return smartphoneRepo.save(smartphone);
     }
-
 
     public List<Computer> fillDatabase() {
         List<Computer> allDevices = new ArrayList<>();
@@ -87,5 +87,4 @@ public class ComputerService {
         allDevices.add(laptop);
         return computerRepo.saveAll(allDevices);
     }
-
 }

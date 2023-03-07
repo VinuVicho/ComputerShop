@@ -22,7 +22,6 @@
             <p th:text="'In stock: ' + ${computer.getStock()}"></p>
         </a>
     </div>
-    <hr>
     <div th:if="${computer.getStock() == 0}">
         <hr>
         <a th:href="@{/shop/{id} (id=${computer.getComputerId()})}">

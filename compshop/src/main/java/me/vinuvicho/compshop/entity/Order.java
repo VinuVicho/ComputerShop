@@ -13,6 +13,7 @@ import javax.persistence.*;
 @ToString
 @Table(name = "order_list")
 public class Order {
+
     @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")

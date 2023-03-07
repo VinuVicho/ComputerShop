@@ -50,11 +50,13 @@ public class OrderController {
         model.addAttribute("computers", computerService.getAllDesktops());
         return "all-computers";
     }
+
     @GetMapping("/laptops")
     public String displayAllLaptops(Model model) {
         model.addAttribute("computers", computerService.getAllLaptops());
         return "all-computers";
     }
+
     @GetMapping("/smartphones")
     public String displayAllSmartphones(Model model) {
         model.addAttribute("computers", computerService.getAllSmartphones());

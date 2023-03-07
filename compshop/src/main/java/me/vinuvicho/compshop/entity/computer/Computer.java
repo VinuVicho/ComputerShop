@@ -12,6 +12,7 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "computer_type")
 @ToString
 public abstract class Computer {
+
     @SequenceGenerator(name = "computer_sequence", sequenceName = "computer_sequence", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "computer_sequence")

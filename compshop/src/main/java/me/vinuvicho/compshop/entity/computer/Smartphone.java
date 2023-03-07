@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Smartphone extends Computer {
+
     @ManyToOne(cascade = CascadeType.ALL)
     private ComputerProperty camera;
 

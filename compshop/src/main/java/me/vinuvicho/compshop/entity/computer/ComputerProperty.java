@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ComputerProperty {
+
     @SequenceGenerator(name = "property_sequence", sequenceName = "property_sequence", allocationSize = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "property_sequence")
@@ -26,6 +27,7 @@ public class ComputerProperty {
     }
 
     public String displayInfo() {
+        System.out.println();
         return "<tr><td>" + propertyType + "</td><td>" + propertyDetails + "</td><td>" +
                 (propertyPrice == 0 ? "-" : "$" + propertyPrice) + "</td></tr>";
     }
